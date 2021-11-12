@@ -1,5 +1,7 @@
 package com.example.viewpager2tabs;
 
+import android.content.Context;
+
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
@@ -7,8 +9,14 @@ import androidx.lifecycle.Lifecycle;
 import androidx.viewpager2.adapter.FragmentStateAdapter;
 
 public class FragmentAdapter extends FragmentStateAdapter {
-    public FragmentAdapter(@NonNull FragmentManager fragmentManager, @NonNull Lifecycle lifecycle) {
+
+    Context context;
+    int totalTabCount;
+
+    public FragmentAdapter(Context context, @NonNull FragmentManager fragmentManager, @NonNull Lifecycle lifecycle, int totalTabCount) {
         super(fragmentManager, lifecycle);
+        this.context = context;
+        this.totalTabCount = totalTabCount;
     }
 
     @NonNull
@@ -28,6 +36,6 @@ public class FragmentAdapter extends FragmentStateAdapter {
 
     @Override
     public int getItemCount() {
-        return 3;
+        return totalTabCount;
     }
 }
